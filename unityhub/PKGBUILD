@@ -1,0 +1,30 @@
+# Maintainer: DopustimVladimir <dopustimvladimir@gmail.com>
+pkgname=unityhub
+pkgver=3.0.0_beta.6
+pkgrel=1
+pkgdesc='Manage Unity projects and Editor installations with Unity Hub'
+url='https://unity.com/'
+arch=('x86_64')
+license=('custom')
+depends=('zlib')
+options=(!strip)
+source=(
+  "$pkgname-$pkgver.tar.gz::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubBeta.tar.gz"
+  "$pkgname.desktop"
+  "$pkgname.svg"
+)
+sha256sums=(
+  'ed94d0f3b9238f929cd7cd15fd5f2ca71c87bb5f5d7e22d2056ad62c5d7ec1d5'
+  'bb5a658c2e6ef1a9d8a56f552190027275d47bb1de31ed116ee580b373619a96'
+  'ccc9fc1afa09558a733f1109bfdad48e6e1f77f8110c625ad7b0ee02407070d3'
+)
+
+package() {
+  install -m 755 -D "$srcdir/Unity Hub/UnityHub.AppImage" \
+    "$pkgdir/opt/$pkgname/$pkgname"
+  install -m 644 -D "$srcdir/$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -m 644 -D "$srcdir/$pkgname.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  xdg-mime default "$pkgname.desktop" 'x-scheme-handler/unityhub'
+}

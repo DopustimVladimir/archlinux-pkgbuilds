@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Unity Hub
+GenericName=Game Development
+GenericName[ru]=Разработка Игр
+GenericName[ja]=ゲーム開発
+Comment=Manage Unity projects and Unity Editor installations
+Comment[ru]=Управление проектами и версиями редактора
+Comment[ja]=Unity プロジェクトと Unity エディターのすべてのインストールを管理できます。
+Keywords=game;dev;development
+Categories=Development
+MimeType=x-scheme-handler/unityhub
+Icon=unityhub
+Exec="/opt/unityhub/unityhub" %U
+Terminal=false
+StartupNotify=true

@@ -1,0 +1,17 @@
+pkgbase = unityhub
+	pkgdesc = Manage Unity projects and Editor installations with Unity Hub
+	pkgver = 3.0.0_beta.6
+	pkgrel = 1
+	url = https://unity.com/
+	arch = x86_64
+	license = custom
+	depends = zlib
+	options = !strip
+	source = unityhub-3.0.0_beta.6.tar.gz::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubBeta.tar.gz
+	source = unityhub.desktop
+	source = unityhub.svg
+	sha256sums = ed94d0f3b9238f929cd7cd15fd5f2ca71c87bb5f5d7e22d2056ad62c5d7ec1d5
+	sha256sums = bb5a658c2e6ef1a9d8a56f552190027275d47bb1de31ed116ee580b373619a96
+	sha256sums = ccc9fc1afa09558a733f1109bfdad48e6e1f77f8110c625ad7b0ee02407070d3
+
+pkgname = unityhub
