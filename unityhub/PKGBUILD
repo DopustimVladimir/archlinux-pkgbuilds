@@ -1,7 +1,7 @@
 # Maintainer: DopustimVladimir <dopustimvladimir@gmail.com>
 pkgname=unityhub
-pkgver=3.0.0_beta.6
-pkgrel=1
+pkgver=3.0.0
+pkgrel=2
 pkgdesc='Manage Unity projects and Editor installations with Unity Hub'
 url='https://unity.com/'
 arch=('x86_64')
@@ -9,19 +9,23 @@ license=('custom')
 depends=('zlib')
 options=(!strip)
 source=(
-  "$pkgname-$pkgver.tar.gz::https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubBeta.tar.gz"
+  "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.0.0.deb"
   "$pkgname.desktop"
   "$pkgname.svg"
 )
 sha256sums=(
-  'ed94d0f3b9238f929cd7cd15fd5f2ca71c87bb5f5d7e22d2056ad62c5d7ec1d5'
+  'c358dbbe590a2777719686a26494fee8b55bbcec8a0f4378dccb50715f2a7fde'
   'bb5a658c2e6ef1a9d8a56f552190027275d47bb1de31ed116ee580b373619a96'
   'ccc9fc1afa09558a733f1109bfdad48e6e1f77f8110c625ad7b0ee02407070d3'
 )
 
 package() {
-  install -m 755 -D "$srcdir/Unity Hub/UnityHub.AppImage" \
-    "$pkgdir/opt/$pkgname/$pkgname"
+  tar -xjf 'data.tar.bz2'
+  install -m 755 -d "$pkgdir/opt/$pkgname"
+  cp -r --no-preserve=ownership --preserve=mode "$srcdir/opt/unityhub/"* \
+    "$pkgdir/opt/$pkgname"
+  install -m 644 -D "$srcdir/opt/unityhub/resources/hub-license.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m 644 -D "$srcdir/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -m 644 -D "$srcdir/$pkgname.svg" \
